@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guías de estudio III</title>
+<style>
+  :root {
+    --bg: #f7f5ff;
+    --ink: #1d1a2e;
+    --muted: #5e5a75;
+    --card: #ffffff;
+    --line: #dcd7f0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16141f;
+      --ink: #f1eefc;
+      --muted: #a6a1bd;
+      --card: #211e2f;
+      --line: #383450;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 56px 20px 64px;
+  }
+  h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  p.sub { margin: 0 0 32px; color: var(--muted); }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  a.materia {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 10px solid var(--c);
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  a.materia span { display: block; font-size: .9rem; font-weight: 400; color: var(--muted); }
+  a.materia:hover { border-color: var(--c); }
+  a.materia:focus-visible { outline: 3px solid var(--c); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Guías de estudio III</h1>
+  <p class="sub">Elige una materia para abrir su guía.</p>
+  <ul>
+    <li><a class="materia" style="--c:#2f9e6b" href="biologia3.html">Biología III<span>Abrir guía</span></a></li>
+    <li><a class="materia" style="--c:#3b6fd4" href="fisica3.html">Física III<span>Abrir guía</span></a></li>
+    <li><a class="materia" style="--c:#d9822b" href="ingles3.html">Inglés III<span>Abrir guía</span></a></li>
+    <li><a class="materia" style="--c:#c2415d" href="matematicas3.html">Matemáticas III<span>Abrir guía</span></a></li>
+  </ul>
+</main>
+</body>
+</html>
