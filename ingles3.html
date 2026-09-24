@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inglés III — Guía de Estudio (Examen Extraordinario)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4f8;--surface:#fff;--border:#c0d0e0;
+  --ink:#061828;--muted:#3a5a78;
+  --a1:#1a4fc4;--a2:#c41a1a;--a3:#1a9a5c;--a4:#b8860b;--a5:#7a1ac4;
+  --a1l:#e8eef9;--a2l:#fdeaea;--a3l:#e3f4e8;--a4l:#fff8e1;--a5l:#f0e8fb;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;}
+
+.hero{background:var(--ink);color:#f0f6ff;padding:56px 48px 48px;position:relative;overflow:hidden;}
+.hero::after{content:'🗣️';font-size:220px;position:absolute;right:20px;bottom:-30px;line-height:1;pointer-events:none;opacity:.06;}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.unit-badge{background:var(--a1);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:4px 14px;border-radius:4px;}
+.subject-tag{font-size:12px;font-weight:500;color:rgba(240,246,255,0.45);letter-spacing:2px;text-transform:uppercase;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,8vw,5rem);line-height:.92;letter-spacing:1px;margin-bottom:16px;}
+.hero h1 span{color:#5cb8f8;}
+.hero-desc{max-width:600px;font-size:15px;color:rgba(240,246,255,0.6);margin-bottom:32px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:500;}
+.pill-dot{width:8px;height:8px;border-radius:50%;}
+
+.nav-strip{background:var(--a1);display:flex;overflow-x:auto;position:sticky;top:0;z-index:10;}
+.nav-strip a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:12px 20px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15);transition:all .2s;}
+.nav-strip a:hover{background:rgba(255,255,255,.12);color:#fff;}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 28px 100px;}
+
+.sec-head{display:flex;align-items:flex-start;margin:56px 0 24px;border-left:5px solid var(--a1);padding-left:18px;}
+.sec-head.red{border-color:var(--a2);} .sec-head.green{border-color:var(--a3);} .sec-head.gold{border-color:var(--a4);} .sec-head.purple{border-color:var(--a5);}
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--a1);margin-right:14px;flex-shrink:0;}
+.sec-head.red .sec-num{color:var(--a2);} .sec-head.green .sec-num{color:var(--a3);} .sec-head.gold .sec-num{color:var(--a4);} .sec-head.purple .sec-num{color:var(--a5);}
+.sec-info h2{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.5px;line-height:1.1;}
+.sec-info p{font-size:13px;color:var(--muted);font-weight:500;}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
+.tip{border-radius:10px;padding:13px 16px;font-size:13.5px;margin-top:14px;display:flex;gap:10px;align-items:flex-start;}
+.tip.blue{background:rgba(26,79,196,.08);border-left:3px solid var(--a1);}
+.tip.red{background:rgba(196,26,26,.08);border-left:3px solid var(--a2);}
+.tip.green{background:rgba(26,154,92,.08);border-left:3px solid var(--a3);}
+.tip.gold{background:rgba(184,134,11,.08);border-left:3px solid var(--a4);}
+.tip.purple{background:rgba(122,26,196,.08);border-left:3px solid var(--a5);}
+.tip-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
+
+footer{text-align:center;padding:28px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;}
+
+/* ═══ QUIZ INTERACTIVO ═══ */
+.quiz-box{background:var(--surface);border:2px dashed var(--border);border-radius:14px;padding:20px 22px;margin:8px 0 32px;}
+.quiz-box.blue{border-color:var(--a1);}.quiz-box.red{border-color:var(--a2);}
+.quiz-box.green{border-color:var(--a3);}.quiz-box.gold{border-color:var(--a4);}
+.quiz-box.purple{border-color:var(--a5);}
+.quiz-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.quiz-head .qz-ico{font-size:1.5rem;}
+.quiz-head h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.5px;}
+.quiz-head span.qz-sub{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.quiz-score{font-size:12px;font-weight:700;margin-bottom:14px;color:var(--muted);}
+.qz-question{background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.qz-question:last-child{margin-bottom:0;}
+.qz-qtext{font-weight:600;font-size:13.5px;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start;}
+.qz-qtext .qz-num{font-family:'Bebas Neue',sans-serif;flex-shrink:0;font-size:1.05rem;line-height:1.3;}
+.qz-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;}
+.qz-opts{display:flex;flex-direction:column;gap:6px;}
+.qz-tf-opts{display:flex;gap:8px;}
+.qz-opt{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit;color:var(--ink);}
+.qz-tf-opts .qz-opt{flex:1;text-align:center;font-weight:600;}
+.qz-opt:hover:not(.disabled){background:var(--a1l);border-color:var(--a1);}
+.qz-opt.correct{background:rgba(26,154,92,.18);border-color:var(--a3);font-weight:700;color:#0a4a2a;}
+.qz-opt.incorrect{background:rgba(196,26,26,.18);border-color:var(--a2);font-weight:700;color:#7a1414;}
+.qz-opt.disabled{cursor:default;}
+.qz-explain{font-size:12.5px;margin-top:9px;padding:9px 13px;border-radius:8px;background:rgba(0,0,0,.04);display:none;line-height:1.5;}
+.qz-explain.show{display:block;}
+.qz-explain b{color:var(--a3);}
+
+.progreso-total{position:sticky;bottom:0;background:var(--ink);color:#fff;text-align:center;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;z-index:5;}
+.progreso-total span{color:#5cb8f8;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="unit-badge">GUÍA DE ESTUDIO</div>
+    <div class="subject-tag">Inglés III · Examen Extraordinario · 3er Trimestre</div>
+  </div>
+  <h1>STUDY GUIDE<br><span>INGLÉS III — EXTRAORDINARIO</span></h1>
+  <p class="hero-desc">Repasa aquí todo lo que necesitas para tu examen extraordinario: Unidad I (One Thing Leads to Another) y Unidad II. Responde las 28 preguntas de práctica, revisa la explicación de cada una y prepárate para aprobar. ¡Tú puedes! 💪</p>
+  <div class="hero-pills">
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Verb tenses overview</div>
+    <div class="pill"><div class="pill-dot" style="background:#ff8fa0"></div>Imperatives / instructions</div>
+    <div class="pill"><div class="pill-dot" style="background:#86efac"></div>Conditionals 0 &amp; 1</div>
+    <div class="pill"><div class="pill-dot" style="background:#fcd45c"></div>Invitations</div>
+    <div class="pill"><div class="pill-dot" style="background:#c4b5fd"></div>Past continuous</div>
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Adverbs, pronouns &amp; phrasal verbs</div>
+  </div>
+</div>
+
+<div class="nav-strip">
+  <a href="#tiempos">Verb tenses</a>
+  <a href="#imperativos">Imperatives</a>
+  <a href="#condicionales">Conditionals</a>
+  <a href="#invitaciones">Invitations</a>
+  <a href="#continuo">Past continuous</a>
+  <a href="#adverbios">Adverbs &amp; pronouns</a>
+  <a href="#phrasal">Phrasal verbs &amp; requests</a>
+</div>
+
+<div class="wrap">
+
+  <!-- TEMA 1: VERB TENSES OVERVIEW -->
+  <div id="tiempos">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div class="sec-info">
+        <h2>Verb tenses overview</h2>
+        <p>Repaso de 1.1 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px">Cada estructura tiene un uso específico: <strong>imperative</strong> para órdenes/consejos, <strong>can</strong> para habilidad, <strong>may/might/could</strong> para posibilidad, <strong>will</strong> para predicciones, y <strong>going to</strong> para planes futuros ya decididos.</p>
+      <div class="tip blue"><span class="tip-ico">💡</span><span><strong>Tip para el examen:</strong> si la oración habla de un plan ya decidido, piensa "going to"; si es una predicción/opinión, piensa "will".</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-tiempos">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Verb tenses overview</span></div>
+      <div class="quiz-score" id="score-tiempos"></div>
+      <div class="qz-container" id="qz-tiempos"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 2: IMPERATIVES/INSTRUCTIONS -->
+  <div id="imperativos">
+    <div class="sec-head red">
+      <div class="sec-num">2</div>
+      <div class="sec-info">
+        <h2>Instructions (imperatives)</h2>
+        <p>Repaso de 1.2 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">El <strong>imperative</strong> usa el verbo base, sin sujeto ("you") delante: <em>Fill the bottle</em>, no <em>You fill the bottle</em>. Se usa para dar instrucciones, recomendaciones y también consejos.</p>
+      <div class="tip red"><span class="tip-ico">📝</span><span><strong>Tip para el examen:</strong> si la oración empieza directamente con el verbo (sin "you", "he", "she"...), es imperative.</span></div>
+    </div>
+    <div class="quiz-box red" id="box-imperativos">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Instructions / imperatives</span></div>
+      <div class="quiz-score" id="score-imperativos"></div>
+      <div class="qz-container" id="qz-imperativos"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 3: CONDITIONALS 0 & 1 -->
+  <div id="condicionales">
+    <div class="sec-head green">
+      <div class="sec-num">3</div>
+      <div class="sec-info">
+        <h2>Conditional Type 0 &amp; Type 1</h2>
+        <p>Repaso de 1.3, 1.4 y 1.5 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a3)">Recuerda</div>
+      <p style="font-size:13.5px"><strong>Type 0</strong>: If + present simple, present simple (verdades generales / hechos científicos). <strong>Type 1</strong>: If + present simple, will + infinitive (situaciones reales/probables en presente o futuro). "Will" nunca va en la cláusula del "if".</p>
+      <div class="tip green"><span class="tip-ico">🔬</span><span><strong>Tip para el examen:</strong> "if it rains" ✅, "if it will rain" ❌ — jamás "will" después de "if".</span></div>
+    </div>
+    <div class="quiz-box green" id="box-condicionales">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Conditionals</span></div>
+      <div class="quiz-score" id="score-condicionales"></div>
+      <div class="qz-container" id="qz-condicionales"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 4: INVITATIONS -->
+  <div id="invitaciones">
+    <div class="sec-head gold">
+      <div class="sec-num">4</div>
+      <div class="sec-info">
+        <h2>Invitations</h2>
+        <p>Repaso de invitar, aceptar y rechazar — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a4)">Recuerda</div>
+      <p style="font-size:13.5px">Para <strong>invitar</strong>: "Would you like to come to...?". Para <strong>aceptar</strong>: "I'd love to come" / "Sounds great!". Para <strong>rechazar</strong>: "I'm afraid I can't make it because...", y es cortés dar una razón.</p>
+      <div class="tip gold"><span class="tip-ico">✉️</span><span><strong>Tip para el examen:</strong> "I'm afraid..." es casi siempre señal de que se está rechazando algo cortésmente.</span></div>
+    </div>
+    <div class="quiz-box gold" id="box-invitaciones">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Invitations</span></div>
+      <div class="quiz-score" id="score-invitaciones"></div>
+      <div class="qz-container" id="qz-invitaciones"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 5: PAST CONTINUOUS -->
+  <div id="continuo">
+    <div class="sec-head purple">
+      <div class="sec-num">5</div>
+      <div class="sec-info">
+        <h2>Past continuous &amp; past simple vs continuous</h2>
+        <p>Repaso de la Unidad II — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a5)">Recuerda</div>
+      <p style="font-size:13.5px">El <strong>past continuous</strong> se forma con was/were + verbo-ing y describe una acción en progreso en el pasado. Se usa junto con el <strong>past simple</strong> para acciones interrumpidas: "when" suele ir con past simple, y "while" con past continuous.</p>
+      <div class="tip purple"><span class="tip-ico">⏳</span><span><strong>Tip para el examen:</strong> "I/he/she/it → was"; "you/we/they → were".</span></div>
+    </div>
+    <div class="quiz-box purple" id="box-continuo">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Past continuous</span></div>
+      <div class="quiz-score" id="score-continuo"></div>
+      <div class="qz-container" id="qz-continuo"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 6: ADVERBS & PRONOUNS -->
+  <div id="adverbios">
+    <div class="sec-head">
+      <div class="sec-num">6</div>
+      <div class="sec-info">
+        <h2>Adverbs of manner &amp; pronouns/possessives</h2>
+        <p>Repaso de la Unidad II — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px">La mayoría de los <strong>adverbios de modo</strong> se forman agregando -ly (slow → slowly), aunque hay excepciones como "good → well" y palabras que no cambian ("fast", "hard"). Los <strong>posesivos</strong>: "my" (adjetivo) vs "mine" (pronombre); "her" como pronombre de objeto y también como adjetivo posesivo.</p>
+      <div class="tip blue"><span class="tip-ico">🔤</span><span><strong>Tip para el examen:</strong> si después de la palabra posesiva hay un sustantivo (my bike), es adjetivo; si no hay sustantivo (it's mine), es pronombre.</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-adverbios">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Adverbs &amp; pronouns/possessives</span></div>
+      <div class="quiz-score" id="score-adverbios"></div>
+      <div class="qz-container" id="qz-adverbios"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 7: PHRASAL VERBS & REQUESTS -->
+  <div id="phrasal">
+    <div class="sec-head red">
+      <div class="sec-num">7</div>
+      <div class="sec-info">
+        <h2>Phrasal verbs &amp; polite requests</h2>
+        <p>Repaso final de la Unidad II — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">Phrasal verbs comunes: <strong>move in</strong> (mudarse), <strong>give up</strong> (rendirse/dejar de hacer algo), <strong>put up with</strong> (tolerar), <strong>turn up</strong> (llegar), <strong>go back</strong> (regresar). Para peticiones informales: "will/can"; para peticiones más corteses: "would/could" — y nunca respondas "Yes, I would" a un "Would you...?".</p>
+      <div class="tip red"><span class="tip-ico">🔁</span><span><strong>Tip para el examen:</strong> "would you mind" siempre va seguido de un gerundio (verbo+ing): "Would you mind closing the door?".</span></div>
+    </div>
+    <div class="quiz-box red" id="box-phrasal">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Phrasal verbs &amp; requests</span></div>
+      <div class="quiz-score" id="score-phrasal"></div>
+      <div class="qz-container" id="qz-phrasal"></div>
+    </div>
+  </div>
+
+  <div class="progreso-total" id="progreso-total">Progreso total: <span id="total-count">0 / 28</span> respondidas</div>
+
+</div>
+
+<footer>Guía de Estudio · Inglés III · Examen Extraordinario · Tercer Trimestre</footer>
+
+<script>
+function initQuiz(containerId, scoreId, colorClass, questions){
+  const container = document.getElementById(containerId);
+  const scoreEl = document.getElementById(scoreId);
+  let answered = 0, correct = 0;
+  const total = questions.length;
+  scoreEl.textContent = `Progreso: 0 / ${total} respondidas`;
+
+  questions.forEach((qz, i) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'qz-question';
+
+    const qText = document.createElement('div');
+    qText.className = 'qz-qtext';
+    const tag = qz.type === 'tf'
+      ? '<span class="qz-tag" style="background:var(--'+colorClass+')">TRUE / FALSE</span>'
+      : '<span class="qz-tag" style="background:var(--'+colorClass+')">MULTIPLE CHOICE</span>';
+    qText.innerHTML = `<span class="qz-num">${i+1}.</span><span>${qz.q} ${tag}</span>`;
+    qDiv.appendChild(qText);
+
+    const optsDiv = document.createElement('div');
+    optsDiv.className = qz.type === 'tf' ? 'qz-tf-opts' : 'qz-opts';
+
+    const explainDiv = document.createElement('div');
+    explainDiv.className = 'qz-explain';
+    explainDiv.innerHTML = qz.exp;
+
+    const opts = qz.type === 'tf' ? ['True', 'False'] : qz.options;
+    const correctIdx = qz.type === 'tf' ? (qz.correct ? 0 : 1) : qz.correct;
+
+    opts.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'qz-opt';
+      btn.textContent = qz.type === 'tf' ? opt : String.fromCharCode(97 + idx) + ') ' + opt;
+      btn.onclick = () => {
+        if (qDiv.dataset.done) return;
+        qDiv.dataset.done = '1';
+        answered++;
+        window.__totalAnswered = (window.__totalAnswered||0) + 1;
+        window.__totalCorrect = (window.__totalCorrect||0) + (idx === correctIdx ? 1 : 0);
+        if (idx === correctIdx) correct++;
+        Array.from(optsDiv.children).forEach((b, bi) => {
+          b.classList.add('disabled');
+          if (bi === correctIdx) b.classList.add('correct');
+          else if (bi === idx) b.classList.add('incorrect');
+        });
+        explainDiv.classList.add('show');
+        scoreEl.textContent = `Progreso: ${answered} / ${total} respondidas · ✅ ${correct} correctas`;
+        const tc = document.getElementById('total-count');
+        if (tc) tc.textContent = `${window.__totalAnswered} / 28`;
+      };
+      optsDiv.appendChild(btn);
+    });
+
+    qDiv.appendChild(optsDiv);
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
+}
+
+/* ===== 1. VERB TENSES OVERVIEW ===== */
+initQuiz('qz-tiempos','score-tiempos','a1',[
+{type:'mc', q:'We use ___ to talk about future plans and intentions.', options:['going to','the past simple','can','may'], correct:0, exp:'<b>Correct answer: a) going to.</b>'},
+{type:'mc', q:'We use ___ when we make predictions based on what we think or imagine.', options:['will','the imperative','the present simple','the past continuous'], correct:0, exp:'<b>Correct answer: a) will.</b>'},
+{type:'tf', q:'"He is going to run" is the affirmative form of the Present Continuous.', correct:false, exp:'<b>False.</b> "He is going to run" is the "going to" future, not the Present Continuous.'},
+{type:'mc', q:'The correct Past Simple negative for "to run" is:', options:["He didn't run",'He doesn\'t run','He won\'t run','He isn\'t running'], correct:0, exp:'<b>Correct answer: a) He didn\'t run.</b>'}
+]);
+
+/* ===== 2. IMPERATIVES/INSTRUCTIONS ===== */
+initQuiz('qz-imperativos','score-imperativos','a2',[
+{type:'mc', q:'The imperative form uses:', options:['The base verb, without a subject','The verb + ing','The verb in past tense','A modal verb always'], correct:0, exp:'<b>Correct answer: a.</b>'},
+{type:'tf', q:'Instructions in English usually use the imperative form without "you" before the verb.', correct:true, exp:'<b>True.</b>'},
+{type:'mc', q:'Which word is commonly used to organize instructions in order?', options:['Step','Maybe','Sometimes','Never'], correct:0, exp:'<b>Correct answer: a) Step.</b>'},
+{type:'tf', q:'Imperative sentences can also be used to give recommendations or advice.', correct:true, exp:'<b>True.</b>'}
+]);
+
+/* ===== 3. CONDITIONALS 0 & 1 ===== */
+initQuiz('qz-condicionales','score-condicionales','a3',[
+{type:'mc', q:'"If you heat water to 100 degrees, it ___." Complete with the correct verb form.', options:['boils','boil','boiled','will boil'], correct:0, exp:'<b>Correct answer: a) boils.</b>'},
+{type:'tf', q:'It is correct to say "If it will rain, we will stay home."', correct:false, exp:'<b>False.</b> "Will" is never used in the "if" clause. The correct form is "If it rains, we will stay home."'},
+{type:'mc', q:'Which sentence correctly uses Conditional Type 1?', options:['If you press that button, the door will open.','If you press that button, the door opens automatically forever.','If you pressed that button, the door would open.','If you press that button, the door open.'], correct:0, exp:'<b>Correct answer: a.</b>'},
+{type:'tf', q:'Conditional Type 0 and Type 1 both use Present Simple in the "if" clause.', correct:true, exp:'<b>True.</b>'}
+]);
+
+/* ===== 4. INVITATIONS ===== */
+initQuiz('qz-invitaciones','score-invitaciones','a4',[
+{type:'mc', q:'Which phrase is used for INVITING someone?', options:['Would you like to come to...?',"I'm afraid I can't make it",'Sounds great! Sure!','Waiting for your reply'], correct:0, exp:'<b>Correct answer: a.</b>'},
+{type:'mc', q:'Which phrase is used for REFUSING an invitation?', options:["I'm afraid I can't make it because...",'Sure! Sounds great!','I\'d like to invite you to...','Thanks for inviting me'], correct:0, exp:'<b>Correct answer: a.</b>'},
+{type:'tf', q:'"How could I say no?" is a phrase used when accepting an invitation.', correct:true, exp:'<b>True.</b>'},
+{type:'tf', q:'It is polite to give a reason when you refuse an invitation, for example: "I\'m going away with my parents that weekend."', correct:true, exp:'<b>True.</b>'}
+]);
+
+/* ===== 5. PAST CONTINUOUS ===== */
+initQuiz('qz-continuo','score-continuo','a5',[
+{type:'mc', q:'We use the past continuous to talk about:', options:['An action that will happen','An action in progress at a certain time in the past','A general truth','A future plan'], correct:1, exp:'<b>Correct answer: b.</b>'},
+{type:'mc', q:'Complete: "They ___ dinner when I arrived." (have)', options:['were having','was having','had','have'], correct:0, exp:'<b>Correct answer: a) were having.</b> "They" uses "were".'},
+{type:'tf', q:'The past continuous of "he" and "she" uses "were".', correct:false, exp:'<b>False.</b> "He" and "she" use "was", not "were".'},
+{type:'mc', q:'Complete: "I ___ in the forest when it started raining."', options:['was walking','walked','walk','am walking'], correct:0, exp:'<b>Correct answer: a.</b>'}
+]);
+
+/* ===== 6. ADVERBS & PRONOUNS ===== */
+initQuiz('qz-adverbios','score-adverbios','a1',[
+{type:'mc', q:'The adverb form of "good" is:', options:['Goodly','Well','Gooder','Good'], correct:1, exp:'<b>Correct answer: b) Well.</b>'},
+{type:'mc', q:'Complete: "Roy was a bad player. He played ___."', options:['bad','badly','worse','baddly'], correct:1, exp:'<b>Correct answer: b) badly.</b>'},
+{type:'mc', q:'The object pronoun for "she" is:', options:['Her','She','Hers','Herself'], correct:0, exp:'<b>Correct answer: a) Her.</b>'},
+{type:'mc', q:'For a regular plural noun ending in -s, the possessive is formed by adding:', options:["'s","Just an apostrophe (')","-s again",'Nothing'], correct:1, exp:"<b>Correct answer: b.</b> Ej: girls'."}
+]);
+
+/* ===== 7. PHRASAL VERBS & REQUESTS ===== */
+initQuiz('qz-phrasal','score-phrasal','a2',[
+{type:'mc', q:'"Move in" means:', options:['Leave a place','Start living in a new home','Stop doing something','Arrive at a place'], correct:1, exp:'<b>Correct answer: b.</b>'},
+{type:'mc', q:'"Put up with" means:', options:['Tolerate','Remove','Arrive','Leave'], correct:0, exp:'<b>Correct answer: a) Tolerate.</b>'},
+{type:'mc', q:'Which are used to make requests MORE polite?', options:['Will and Can','Would and Could','Do and Does','Am and Is'], correct:1, exp:'<b>Correct answer: b.</b>'},
+{type:'tf', q:'You should answer a polite request like "Would you...?" by saying "Yes, I would."', correct:false, exp:'<b>False.</b> You should answer with "Yes, I will/can" or another form, never "Yes, I would".'}
+]);
+</script>
+
+</body>
+</html>
