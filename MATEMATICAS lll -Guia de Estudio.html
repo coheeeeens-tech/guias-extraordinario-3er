@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemáticas III — Guía de Estudio (Examen Extraordinario)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4f8;--surface:#fff;--border:#c0d0e0;
+  --ink:#061828;--muted:#3a5a78;
+  --a1:#1a4fc4;--a2:#c41a1a;--a3:#1a9a5c;--a4:#b8860b;--a5:#7a1ac4;
+  --a1l:#e8eef9;--a2l:#fdeaea;--a3l:#e3f4e8;--a4l:#fff8e1;--a5l:#f0e8fb;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;}
+
+.hero{background:var(--ink);color:#f0f6ff;padding:56px 48px 48px;position:relative;overflow:hidden;}
+.hero::after{content:'📐';font-size:220px;position:absolute;right:20px;bottom:-30px;line-height:1;pointer-events:none;opacity:.06;}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.unit-badge{background:var(--a1);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:4px 14px;border-radius:4px;}
+.subject-tag{font-size:12px;font-weight:500;color:rgba(240,246,255,0.45);letter-spacing:2px;text-transform:uppercase;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,8vw,5rem);line-height:.92;letter-spacing:1px;margin-bottom:16px;}
+.hero h1 span{color:#5cb8f8;}
+.hero-desc{max-width:600px;font-size:15px;color:rgba(240,246,255,0.6);margin-bottom:32px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:500;}
+.pill-dot{width:8px;height:8px;border-radius:50%;}
+
+.nav-strip{background:var(--a1);display:flex;overflow-x:auto;position:sticky;top:0;z-index:10;}
+.nav-strip a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:12px 20px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15);transition:all .2s;}
+.nav-strip a:hover{background:rgba(255,255,255,.12);color:#fff;}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 28px 100px;}
+
+.sec-head{display:flex;align-items:flex-start;margin:56px 0 24px;border-left:5px solid var(--a1);padding-left:18px;}
+.sec-head.red{border-color:var(--a2);} .sec-head.green{border-color:var(--a3);} .sec-head.gold{border-color:var(--a4);} .sec-head.purple{border-color:var(--a5);}
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--a1);margin-right:14px;flex-shrink:0;}
+.sec-head.red .sec-num{color:var(--a2);} .sec-head.green .sec-num{color:var(--a3);} .sec-head.gold .sec-num{color:var(--a4);} .sec-head.purple .sec-num{color:var(--a5);}
+.sec-info h2{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.5px;line-height:1.1;}
+.sec-info p{font-size:13px;color:var(--muted);font-weight:500;}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
+.tip{border-radius:10px;padding:13px 16px;font-size:13.5px;margin-top:14px;display:flex;gap:10px;align-items:flex-start;}
+.tip.blue{background:rgba(26,79,196,.08);border-left:3px solid var(--a1);}
+.tip.red{background:rgba(196,26,26,.08);border-left:3px solid var(--a2);}
+.tip.green{background:rgba(26,154,92,.08);border-left:3px solid var(--a3);}
+.tip.gold{background:rgba(184,134,11,.08);border-left:3px solid var(--a4);}
+.tip.purple{background:rgba(122,26,196,.08);border-left:3px solid var(--a5);}
+.tip-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
+
+footer{text-align:center;padding:28px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;}
+
+/* ═══ QUIZ INTERACTIVO ═══ */
+.quiz-box{background:var(--surface);border:2px dashed var(--border);border-radius:14px;padding:20px 22px;margin:8px 0 32px;}
+.quiz-box.blue{border-color:var(--a1);}.quiz-box.red{border-color:var(--a2);}
+.quiz-box.green{border-color:var(--a3);}.quiz-box.gold{border-color:var(--a4);}
+.quiz-box.purple{border-color:var(--a5);}
+.quiz-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.quiz-head .qz-ico{font-size:1.5rem;}
+.quiz-head h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.5px;}
+.quiz-head span.qz-sub{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.quiz-score{font-size:12px;font-weight:700;margin-bottom:14px;color:var(--muted);}
+.qz-question{background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.qz-question:last-child{margin-bottom:0;}
+.qz-qtext{font-weight:600;font-size:13.5px;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start;}
+.qz-qtext .qz-num{font-family:'Bebas Neue',sans-serif;flex-shrink:0;font-size:1.05rem;line-height:1.3;}
+.qz-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;}
+.qz-opts{display:flex;flex-direction:column;gap:6px;}
+.qz-tf-opts{display:flex;gap:8px;}
+.qz-opt{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit;color:var(--ink);}
+.qz-tf-opts .qz-opt{flex:1;text-align:center;font-weight:600;}
+.qz-opt:hover:not(.disabled){background:var(--a1l);border-color:var(--a1);}
+.qz-opt.correct{background:rgba(26,154,92,.18);border-color:var(--a3);font-weight:700;color:#0a4a2a;}
+.qz-opt.incorrect{background:rgba(196,26,26,.18);border-color:var(--a2);font-weight:700;color:#7a1414;}
+.qz-opt.disabled{cursor:default;}
+.qz-explain{font-size:12.5px;margin-top:9px;padding:9px 13px;border-radius:8px;background:rgba(0,0,0,.04);display:none;line-height:1.5;}
+.qz-explain.show{display:block;}
+.qz-explain b{color:var(--a3);}
+
+.progreso-total{position:sticky;bottom:0;background:var(--ink);color:#fff;text-align:center;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;z-index:5;}
+.progreso-total span{color:#5cb8f8;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="unit-badge">GUÍA DE ESTUDIO</div>
+    <div class="subject-tag">Matemáticas III · Examen Extraordinario · 3er Trimestre</div>
+  </div>
+  <h1>GUÍA DE ESTUDIO<br><span>MATEMÁTICAS III — EXTRAORDINARIO</span></h1>
+  <p class="hero-desc">Repasa aquí todo lo que necesitas para tu examen extraordinario: Unidad I (Sistema Coordenado Bidimensional y la Línea Recta) y Unidad II (Circunferencia). Responde las 28 preguntas de práctica, revisa la explicación de cada una y prepárate para aprobar. ¡Tú puedes! 💪</p>
+  <div class="hero-pills">
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Plano cartesiano</div>
+    <div class="pill"><div class="pill-dot" style="background:#ff8fa0"></div>Lugares geométricos</div>
+    <div class="pill"><div class="pill-dot" style="background:#86efac"></div>Distancia y punto medio</div>
+    <div class="pill"><div class="pill-dot" style="background:#fcd45c"></div>Triángulos</div>
+    <div class="pill"><div class="pill-dot" style="background:#c4b5fd"></div>Pendiente y ecuaciones de la recta</div>
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Circunferencia</div>
+  </div>
+</div>
+
+<div class="nav-strip">
+  <a href="#plano">Plano cartesiano</a>
+  <a href="#lugares">Lugares geométricos</a>
+  <a href="#distancia">Distancia y punto medio</a>
+  <a href="#triangulos">Triángulos</a>
+  <a href="#pendiente">Pendiente</a>
+  <a href="#ecuaciones">Ecuaciones de la recta</a>
+  <a href="#circunferencia">Circunferencia</a>
+</div>
+
+<div class="wrap">
+
+  <!-- TEMA 1: PLANO CARTESIANO -->
+  <div id="plano">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div class="sec-info">
+        <h2>Plano cartesiano y cuadrantes</h2>
+        <p>Repaso de 1.1 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px">El plano cartesiano se divide en 4 cuadrantes. En el <strong>I</strong> ambas coordenadas son positivas (+,+); en el <strong>II</strong>, (−,+); en el <strong>III</strong>, (−,−); en el <strong>IV</strong>, (+,−). El eje horizontal es el eje de las <strong>abscisas (x)</strong> y el vertical, el eje de las <strong>ordenadas (y)</strong>.</p>
+      <div class="tip blue"><span class="tip-ico">💡</span><span><strong>Tip para el examen:</strong> fíjate primero en los signos de x y y; eso te dice el cuadrante de inmediato.</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-plano">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Plano cartesiano</span></div>
+      <div class="quiz-score" id="score-plano"></div>
+      <div class="qz-container" id="qz-plano"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 2: LUGARES GEOMÉTRICOS -->
+  <div id="lugares">
+    <div class="sec-head red">
+      <div class="sec-num">2</div>
+      <div class="sec-info">
+        <h2>Lugares geométricos</h2>
+        <p>Repaso de 1.3 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">Un <strong>lugar geométrico</strong> es un conjunto de puntos que cumple con una condición dada, escrito como R={(x,y)|E(x,y)=0}. Para graficarlo, se recomienda hacer una <strong>tabulación</strong>: dar valores a x y calcular los de y para formar parejas ordenadas.</p>
+      <div class="tip red"><span class="tip-ico">📊</span><span><strong>Tip para el examen:</strong> si la relación tiene x², probablemente es una parábola; si es lineal (sin exponentes), es una recta.</span></div>
+    </div>
+    <div class="quiz-box red" id="box-lugares">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Lugares geométricos</span></div>
+      <div class="quiz-score" id="score-lugares"></div>
+      <div class="qz-container" id="qz-lugares"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 3: DISTANCIA Y PUNTO MEDIO -->
+  <div id="distancia">
+    <div class="sec-head green">
+      <div class="sec-num">3</div>
+      <div class="sec-info">
+        <h2>Distancia entre dos puntos y punto medio</h2>
+        <p>Repaso de 1.4, 1.5 y división de segmentos — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a3)">Recuerda</div>
+      <p style="font-size:13.5px">La <strong>distancia</strong> entre dos puntos se calcula con d=√((x2−x1)²+(y2−y1)²). El <strong>punto medio</strong> es un caso particular de la división de un segmento, cuando la razón r=1: x=(x1+x2)/2, y=(y1+y2)/2.</p>
+      <div class="tip green"><span class="tip-ico">📏</span><span><strong>Tip para el examen:</strong> etiqueta siempre tus coordenadas como x1,y1,x2,y2 antes de sustituir, para no confundirte.</span></div>
+    </div>
+    <div class="quiz-box green" id="box-distancia">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Distancia y punto medio</span></div>
+      <div class="quiz-score" id="score-distancia"></div>
+      <div class="qz-container" id="qz-distancia"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 4: TRIÁNGULOS -->
+  <div id="triangulos">
+    <div class="sec-head gold">
+      <div class="sec-num">4</div>
+      <div class="sec-info">
+        <h2>Triángulos en el plano</h2>
+        <p>Repaso de 1.6 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a4)">Recuerda</div>
+      <p style="font-size:13.5px">Para calcular el <strong>perímetro</strong> de un triángulo en el plano se suman las tres distancias entre sus vértices. La <strong>fórmula de Herón</strong> A=√(s(s−a)(s−b)(s−c)), con s=(a+b+c)/2, permite calcular el área sin conocer la altura.</p>
+      <div class="tip gold"><span class="tip-ico">📐</span><span><strong>Tip para el examen:</strong> primero calcula las 3 distancias (lados), luego "s", y hasta el final sustituye en Herón.</span></div>
+    </div>
+    <div class="quiz-box gold" id="box-triangulos">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Triángulos</span></div>
+      <div class="quiz-score" id="score-triangulos"></div>
+      <div class="qz-container" id="qz-triangulos"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 5: PENDIENTE -->
+  <div id="pendiente">
+    <div class="sec-head purple">
+      <div class="sec-num">5</div>
+      <div class="sec-info">
+        <h2>Pendiente de una recta</h2>
+        <p>Repaso de 1.7 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a5)">Recuerda</div>
+      <p style="font-size:13.5px">La <strong>pendiente</strong> (m) es la tangente del ángulo de inclinación: m=tan(a), o bien m=(y2−y1)/(x2−x1). El ángulo de inclinación va de 0° a 180°. Si la recta es vertical, la pendiente <strong>no existe</strong>.</p>
+      <div class="tip purple"><span class="tip-ico">📈</span><span><strong>Tip para el examen:</strong> ángulo agudo → pendiente positiva; ángulo obtuso → pendiente negativa.</span></div>
+    </div>
+    <div class="quiz-box purple" id="box-pendiente">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Pendiente</span></div>
+      <div class="quiz-score" id="score-pendiente"></div>
+      <div class="qz-container" id="qz-pendiente"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 6: ECUACIONES DE LA RECTA -->
+  <div id="ecuaciones">
+    <div class="sec-head">
+      <div class="sec-num">6</div>
+      <div class="sec-info">
+        <h2>Ecuaciones de la recta</h2>
+        <p>Repaso final de la Unidad I — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px">Formas de la recta: <strong>punto-pendiente</strong> y−y1=m(x−x1); <strong>pendiente-ordenada</strong> y=mx+b; <strong>simétrica</strong> x/a+y/b=1; <strong>general</strong> Ax+By+C=0. Rectas paralelas: misma pendiente. Perpendiculares: producto de pendientes = −1.</p>
+      <div class="tip blue"><span class="tip-ico">✏️</span><span><strong>Tip para el examen:</strong> si te dan un punto y una pendiente, usa punto-pendiente; si te dan dos puntos, primero calcula m y luego sustituye.</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-ecuaciones">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Ecuaciones de la recta</span></div>
+      <div class="quiz-score" id="score-ecuaciones"></div>
+      <div class="qz-container" id="qz-ecuaciones"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 7: CIRCUNFERENCIA -->
+  <div id="circunferencia">
+    <div class="sec-head red">
+      <div class="sec-num">7</div>
+      <div class="sec-info">
+        <h2>Circunferencia: elementos y ecuaciones</h2>
+        <p>Repaso de la Unidad II completa — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">La circunferencia es el lugar geométrico de los puntos que equidistan de un centro (esa distancia es el <strong>radio</strong>). Ecuación ordinaria, centro en el origen: x²+y²=r². Centro fuera del origen: (x−h)²+(y−k)²=r². Forma general: x²+y²+Dx+Ey+F=0, con centro C(−D/2,−E/2).</p>
+      <div class="tip red"><span class="tip-ico">⭕</span><span><strong>Tip para el examen:</strong> si ves (x−h)² es porque h es el valor de x del centro; ¡cuidado con el signo, se invierte!</span></div>
+    </div>
+    <div class="quiz-box red" id="box-circunferencia">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Circunferencia</span></div>
+      <div class="quiz-score" id="score-circunferencia"></div>
+      <div class="qz-container" id="qz-circunferencia"></div>
+    </div>
+  </div>
+
+  <div class="progreso-total" id="progreso-total">Progreso total: <span id="total-count">0 / 28</span> respondidas</div>
+
+</div>
+
+<footer>Guía de Estudio · Matemáticas III · Examen Extraordinario · Tercer Trimestre</footer>
+
+<script>
+function initQuiz(containerId, scoreId, colorClass, questions){
+  const container = document.getElementById(containerId);
+  const scoreEl = document.getElementById(scoreId);
+  let answered = 0, correct = 0;
+  const total = questions.length;
+  scoreEl.textContent = `Progreso: 0 / ${total} respondidas`;
+
+  questions.forEach((qz, i) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'qz-question';
+
+    const qText = document.createElement('div');
+    qText.className = 'qz-qtext';
+    const tag = qz.type === 'tf'
+      ? '<span class="qz-tag" style="background:var(--'+colorClass+')">V / F</span>'
+      : '<span class="qz-tag" style="background:var(--'+colorClass+')">OPCIÓN MÚLTIPLE</span>';
+    qText.innerHTML = `<span class="qz-num">${i+1}.</span><span>${qz.q} ${tag}</span>`;
+    qDiv.appendChild(qText);
+
+    const optsDiv = document.createElement('div');
+    optsDiv.className = qz.type === 'tf' ? 'qz-tf-opts' : 'qz-opts';
+
+    const explainDiv = document.createElement('div');
+    explainDiv.className = 'qz-explain';
+    explainDiv.innerHTML = qz.exp;
+
+    const opts = qz.type === 'tf' ? ['Verdadero', 'Falso'] : qz.options;
+    const correctIdx = qz.type === 'tf' ? (qz.correct ? 0 : 1) : qz.correct;
+
+    opts.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'qz-opt';
+      btn.textContent = qz.type === 'tf' ? opt : String.fromCharCode(97 + idx) + ') ' + opt;
+      btn.onclick = () => {
+        if (qDiv.dataset.done) return;
+        qDiv.dataset.done = '1';
+        answered++;
+        window.__totalAnswered = (window.__totalAnswered||0) + 1;
+        window.__totalCorrect = (window.__totalCorrect||0) + (idx === correctIdx ? 1 : 0);
+        if (idx === correctIdx) correct++;
+        Array.from(optsDiv.children).forEach((b, bi) => {
+          b.classList.add('disabled');
+          if (bi === correctIdx) b.classList.add('correct');
+          else if (bi === idx) b.classList.add('incorrect');
+        });
+        explainDiv.classList.add('show');
+        scoreEl.textContent = `Progreso: ${answered} / ${total} respondidas · ✅ ${correct} correctas`;
+        const tc = document.getElementById('total-count');
+        if (tc) tc.textContent = `${window.__totalAnswered} / 28`;
+      };
+      optsDiv.appendChild(btn);
+    });
+
+    qDiv.appendChild(optsDiv);
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
+}
+
+/* ===== 1. PLANO CARTESIANO ===== */
+initQuiz('qz-plano','score-plano','a1',[
+{type:'mc', q:'¿En qué cuadrante se ubica el punto (−3, 7)?', options:['I','II','III','IV'], correct:1, exp:'<b>Respuesta correcta: b) II.</b> x negativa, y positiva.'},
+{type:'mc', q:'¿En qué cuadrante se ubica el punto (4, −2)?', options:['I','II','III','IV'], correct:3, exp:'<b>Respuesta correcta: d) IV.</b> x positiva, y negativa.'},
+{type:'tf', q:'El eje horizontal del plano cartesiano se llama eje de las ordenadas.', correct:false, exp:'<b>Falso.</b> El eje horizontal es el de las abscisas (x); el vertical es el de las ordenadas (y).'},
+{type:'mc', q:'Un punto donde ambas coordenadas son positivas se ubica en el cuadrante:', options:['I','II','III','IV'], correct:0, exp:'<b>Respuesta correcta: a) I.</b>'}
+]);
+
+/* ===== 2. LUGARES GEOMÉTRICOS ===== */
+initQuiz('qz-lugares','score-lugares','a2',[
+{type:'mc', q:'Un lugar geométrico es:', options:['Un solo punto fijo','Un conjunto de puntos que cumplen una condición dada','Una recta siempre','Un número real cualquiera'], correct:1, exp:'<b>Respuesta correcta: b.</b>'},
+{type:'tf', q:'La relación E(x,y)=x−y=0 representa una diagonal en el plano.', correct:true, exp:'<b>Verdadero.</b> Todos los puntos donde x=y forman esa diagonal.'},
+{type:'mc', q:'La relación E(x,y)=y−x²=0 representa gráficamente:', options:['Una recta','Una parábola','Un círculo','Un punto'], correct:1, exp:'<b>Respuesta correcta: b) Una parábola.</b>'},
+{type:'mc', q:'¿Qué pareja ordenada NO cumple con y=x²?', options:['(3,9)','(2,4)','(5,20)','(1,1)'], correct:2, exp:'<b>Respuesta correcta: c) (5,20).</b> 5²=25, no 20.'}
+]);
+
+/* ===== 3. DISTANCIA Y PUNTO MEDIO ===== */
+initQuiz('qz-distancia','score-distancia','a3',[
+{type:'mc', q:'La fórmula para calcular la distancia entre dos puntos es:', options:['d=√((x2−x1)²+(y2−y1)²)','d=(x2−x1)+(y2−y1)','d=x1·y1','d=x2−y2'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'El resultado de la distancia entre dos puntos puede ser negativo.', correct:false, exp:'<b>Falso.</b> La distancia siempre es positiva o cero.'},
+{type:'mc', q:'La fórmula del punto medio de un segmento es:', options:['x=(x1+x2)/2','x=(x1−x2)/2','x=x1·x2','x=(x1+x2)²'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'Cuando la razón r=1 en la fórmula de división de un segmento, se obtiene la fórmula del punto medio.', correct:true, exp:'<b>Verdadero.</b>'}
+]);
+
+/* ===== 4. TRIÁNGULOS ===== */
+initQuiz('qz-triangulos','score-triangulos','a4',[
+{type:'mc', q:'Para calcular el perímetro de un triángulo en el plano se necesita:', options:['Solo un vértice','Las coordenadas de sus tres vértices','El área','La pendiente'], correct:1, exp:'<b>Respuesta correcta: b.</b>'},
+{type:'mc', q:'La fórmula de Herón para el área de un triángulo es:', options:['A=√(s(s−a)(s−b)(s−c))','A=b·h/2','A=πr²','A=l²'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'La fórmula de Herón es útil porque no requiere conocer las alturas del triángulo.', correct:true, exp:'<b>Verdadero.</b> Solo necesita los tres lados.'},
+{type:'mc', q:'¿Qué otra figura se puede formar y calcular su área si se conocen 4 vértices, uniendo los segmentos?', options:['Un cuadrilátero','Una recta','Un punto','Un ángulo'], correct:0, exp:'<b>Respuesta correcta: a) Un cuadrilátero.</b>'}
+]);
+
+/* ===== 5. PENDIENTE ===== */
+initQuiz('qz-pendiente','score-pendiente','a5',[
+{type:'mc', q:'El ángulo de inclinación de una recta se mide:', options:['Del eje Y hacia la recta','Del eje X hacia la recta, por encima de él','Siempre en sentido de las manecillas del reloj','Entre dos rectas cualesquiera'], correct:1, exp:'<b>Respuesta correcta: b.</b>'},
+{type:'tf', q:'La pendiente de una recta es la tangente trigonométrica de su ángulo de inclinación.', correct:true, exp:'<b>Verdadero.</b> m=tan(a).'},
+{type:'mc', q:'Si el ángulo de inclinación de una recta es de 135°, su pendiente es:', options:['1','−1','0','135'], correct:1, exp:'<b>Respuesta correcta: b) −1.</b> tan(135°)=−1.'},
+{type:'mc', q:'Si una recta es paralela al eje Y, su pendiente:', options:['Es cero','Es 1','No existe','Es negativa'], correct:2, exp:'<b>Respuesta correcta: c) No existe.</b> tan 90° no está definida.'}
+]);
+
+/* ===== 6. ECUACIONES DE LA RECTA ===== */
+initQuiz('qz-ecuaciones','score-ecuaciones','a1',[
+{type:'mc', q:'La ecuación punto-pendiente de una recta es:', options:['y−y1=m(x−x1)','y=mx+b','x/a+y/b=1','Ax+By+C=0'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'Dos rectas son paralelas si tienen la misma pendiente.', correct:true, exp:'<b>Verdadero.</b>'},
+{type:'mc', q:'Si m1=3 es la pendiente de una recta, la pendiente de una recta perpendicular a ella es:', options:['3','−1/3','1/3','−3'], correct:1, exp:'<b>Respuesta correcta: b) −1/3.</b> El recíproco negativo de 3.'},
+{type:'mc', q:'En la ecuación y=mx+b, "b" representa:', options:['La pendiente','La ordenada en el origen','La abscisa en el origen','El ángulo de inclinación'], correct:1, exp:'<b>Respuesta correcta: b.</b>'}
+]);
+
+/* ===== 7. CIRCUNFERENCIA ===== */
+initQuiz('qz-circunferencia','score-circunferencia','a2',[
+{type:'mc', q:'Una recta que toca a la circunferencia en un solo punto se llama:', options:['Tangente','Secante','Cuerda','Diámetro'], correct:0, exp:'<b>Respuesta correcta: a.</b> El punto de contacto se llama punto de tangencia.'},
+{type:'tf', q:'La recta tangente a una circunferencia es siempre perpendicular al radio trazado hasta el punto de tangencia.', correct:true, exp:'<b>Verdadero.</b>'},
+{type:'mc', q:'La ecuación de la circunferencia con centro C(−1, 1) y radio r = 3, en su forma ordinaria, es:', options:['(x + 1)² + (y − 1)² = 9','(x − 1)² + (y + 1)² = 9','(x + 1)² + (y − 1)² = 3','(x − 1)² + (y − 1)² = 9'], correct:0, exp:'<b>Respuesta correcta: a.</b> r² = (3)² = 9.'},
+{type:'mc', q:'El radio de una circunferencia a partir de su ecuación general se calcula con:', options:['r = √( (D/2)² + (E/2)² − F )','r = D + E − F','r = √F','r = (D/2) + (E/2)'], correct:0, exp:'<b>Respuesta correcta: a.</b>'}
+]);
+</script>
+
+</body>
+</html>

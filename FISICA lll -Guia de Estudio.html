@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Física III — Guía de Estudio (Examen Extraordinario)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0f4f8;--surface:#fff;--border:#c0d0e0;
+  --ink:#061828;--muted:#3a5a78;
+  --a1:#1a4fc4;--a2:#c41a1a;--a3:#1a9a5c;--a4:#b8860b;--a5:#7a1ac4;
+  --a1l:#e8eef9;--a2l:#fdeaea;--a3l:#e3f4e8;--a4l:#fff8e1;--a5l:#f0e8fb;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.7;}
+
+.hero{background:var(--ink);color:#f0f6ff;padding:56px 48px 48px;position:relative;overflow:hidden;}
+.hero::after{content:'🚀';font-size:220px;position:absolute;right:20px;bottom:-30px;line-height:1;pointer-events:none;opacity:.06;}
+.hero-top{display:flex;align-items:center;gap:16px;margin-bottom:28px;}
+.unit-badge{background:var(--a1);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;padding:4px 14px;border-radius:4px;}
+.subject-tag{font-size:12px;font-weight:500;color:rgba(240,246,255,0.45);letter-spacing:2px;text-transform:uppercase;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,8vw,5rem);line-height:.92;letter-spacing:1px;margin-bottom:16px;}
+.hero h1 span{color:#5cb8f8;}
+.hero-desc{max-width:600px;font-size:15px;color:rgba(240,246,255,0.6);margin-bottom:32px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;font-size:13px;font-weight:500;}
+.pill-dot{width:8px;height:8px;border-radius:50%;}
+
+.nav-strip{background:var(--a1);display:flex;overflow-x:auto;position:sticky;top:0;z-index:10;}
+.nav-strip a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:12px 20px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.15);transition:all .2s;}
+.nav-strip a:hover{background:rgba(255,255,255,.12);color:#fff;}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 28px 100px;}
+
+.sec-head{display:flex;align-items:flex-start;margin:56px 0 24px;border-left:5px solid var(--a1);padding-left:18px;}
+.sec-head.red{border-color:var(--a2);} .sec-head.green{border-color:var(--a3);} .sec-head.gold{border-color:var(--a4);} .sec-head.purple{border-color:var(--a5);}
+.sec-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--a1);margin-right:14px;flex-shrink:0;}
+.sec-head.red .sec-num{color:var(--a2);} .sec-head.green .sec-num{color:var(--a3);} .sec-head.gold .sec-num{color:var(--a4);} .sec-head.purple .sec-num{color:var(--a5);}
+.sec-info h2{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.5px;line-height:1.1;}
+.sec-info p{font-size:13px;color:var(--muted);font-weight:500;}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+
+.tip{border-radius:10px;padding:13px 16px;font-size:13.5px;margin-top:14px;display:flex;gap:10px;align-items:flex-start;}
+.tip.blue{background:rgba(26,79,196,.08);border-left:3px solid var(--a1);}
+.tip.red{background:rgba(196,26,26,.08);border-left:3px solid var(--a2);}
+.tip.green{background:rgba(26,154,92,.08);border-left:3px solid var(--a3);}
+.tip.gold{background:rgba(184,134,11,.08);border-left:3px solid var(--a4);}
+.tip.purple{background:rgba(122,26,196,.08);border-left:3px solid var(--a5);}
+.tip-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
+
+footer{text-align:center;padding:28px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;}
+
+/* ═══ QUIZ INTERACTIVO ═══ */
+.quiz-box{background:var(--surface);border:2px dashed var(--border);border-radius:14px;padding:20px 22px;margin:8px 0 32px;}
+.quiz-box.blue{border-color:var(--a1);}.quiz-box.red{border-color:var(--a2);}
+.quiz-box.green{border-color:var(--a3);}.quiz-box.gold{border-color:var(--a4);}
+.quiz-box.purple{border-color:var(--a5);}
+.quiz-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+.quiz-head .qz-ico{font-size:1.5rem;}
+.quiz-head h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.5px;}
+.quiz-head span.qz-sub{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.quiz-score{font-size:12px;font-weight:700;margin-bottom:14px;color:var(--muted);}
+.qz-question{background:var(--bg);border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.qz-question:last-child{margin-bottom:0;}
+.qz-qtext{font-weight:600;font-size:13.5px;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start;}
+.qz-qtext .qz-num{font-family:'Bebas Neue',sans-serif;flex-shrink:0;font-size:1.05rem;line-height:1.3;}
+.qz-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;}
+.qz-opts{display:flex;flex-direction:column;gap:6px;}
+.qz-tf-opts{display:flex;gap:8px;}
+.qz-opt{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 13px;font-size:13px;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit;color:var(--ink);}
+.qz-tf-opts .qz-opt{flex:1;text-align:center;font-weight:600;}
+.qz-opt:hover:not(.disabled){background:var(--a1l);border-color:var(--a1);}
+.qz-opt.correct{background:rgba(26,154,92,.18);border-color:var(--a3);font-weight:700;color:#0a4a2a;}
+.qz-opt.incorrect{background:rgba(196,26,26,.18);border-color:var(--a2);font-weight:700;color:#7a1414;}
+.qz-opt.disabled{cursor:default;}
+.qz-explain{font-size:12.5px;margin-top:9px;padding:9px 13px;border-radius:8px;background:rgba(0,0,0,.04);display:none;line-height:1.5;}
+.qz-explain.show{display:block;}
+.qz-explain b{color:var(--a3);}
+
+.progreso-total{position:sticky;bottom:0;background:var(--ink);color:#fff;text-align:center;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;z-index:5;}
+.progreso-total span{color:#5cb8f8;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-top">
+    <div class="unit-badge">GUÍA DE ESTUDIO</div>
+    <div class="subject-tag">Física III · Examen Extraordinario · 3er Trimestre</div>
+  </div>
+  <h1>GUÍA DE ESTUDIO<br><span>FÍSICA III — EXTRAORDINARIO</span></h1>
+  <p class="hero-desc">Repasa aquí todo lo que necesitas para tu examen extraordinario: Unidad I (mediciones, vectores y movimiento) y Unidad II (leyes de Newton, trabajo y energía). Responde las 28 preguntas de práctica, revisa la explicación de cada una y prepárate para aprobar. ¡Tú puedes! 💪</p>
+  <div class="hero-pills">
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Conversión de unidades</div>
+    <div class="pill"><div class="pill-dot" style="background:#ff8fa0"></div>Notación científica</div>
+    <div class="pill"><div class="pill-dot" style="background:#86efac"></div>Vectores</div>
+    <div class="pill"><div class="pill-dot" style="background:#fcd45c"></div>Velocidad y aceleración</div>
+    <div class="pill"><div class="pill-dot" style="background:#c4b5fd"></div>Caída libre y tiro vertical</div>
+    <div class="pill"><div class="pill-dot" style="background:#5cb8f8"></div>Leyes de Newton, trabajo y energía</div>
+  </div>
+</div>
+
+<div class="nav-strip">
+  <a href="#conversion">Conversión de unidades</a>
+  <a href="#notacion">Notación científica</a>
+  <a href="#vectores">Vectores</a>
+  <a href="#velocidad">Velocidad y aceleración</a>
+  <a href="#caidalibre">Caída libre y tiro vertical</a>
+  <a href="#newton">Leyes de Newton</a>
+  <a href="#energia">Trabajo y energía</a>
+</div>
+
+<div class="wrap">
+
+  <!-- TEMA 1: CONVERSIÓN DE UNIDADES -->
+  <div id="conversion">
+    <div class="sec-head">
+      <div class="sec-num">1</div>
+      <div class="sec-info">
+        <h2>Conversión de unidades</h2>
+        <p>Repaso de 1.1 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px">Un <strong>factor de conversión</strong> es una fracción cuyo valor equivale a 1 (por ejemplo, 1000 m / 1 km), por eso al multiplicarlo no altera la cantidad real, solo cambia sus unidades. Para convertir unidades compuestas (como km/h a m/s) se necesitan varios factores multiplicados.</p>
+      <div class="tip blue"><span class="tip-ico">💡</span><span><strong>Tip para el examen:</strong> escribe el factor de forma que la unidad que quieres eliminar quede en el denominador.</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-conversion">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Conversión de unidades</span></div>
+      <div class="quiz-score" id="score-conversion"></div>
+      <div class="qz-container" id="qz-conversion"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 2: NOTACIÓN CIENTÍFICA -->
+  <div id="notacion">
+    <div class="sec-head red">
+      <div class="sec-num">2</div>
+      <div class="sec-info">
+        <h2>Notación científica</h2>
+        <p>Repaso de 1.2 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">Para <strong>sumar/restar</strong> en notación científica, las potencias de 10 deben ser iguales. Para <strong>multiplicar</strong>, se multiplican las mantisas y se suman los exponentes; para <strong>dividir</strong>, se dividen las mantisas y se restan los exponentes. "Kilo" = 10³; "micro" = 10⁻⁶.</p>
+      <div class="tip red"><span class="tip-ico">🔢</span><span><strong>Tip para el examen:</strong> cuenta cuántos lugares mueves el punto decimal; eso te da el exponente (positivo si el número es grande, negativo si es pequeño).</span></div>
+    </div>
+    <div class="quiz-box red" id="box-notacion">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Notación científica</span></div>
+      <div class="quiz-score" id="score-notacion"></div>
+      <div class="qz-container" id="qz-notacion"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 3: VECTORES -->
+  <div id="vectores">
+    <div class="sec-head green">
+      <div class="sec-num">3</div>
+      <div class="sec-info">
+        <h2>Vectores</h2>
+        <p>Repaso de 1.3 — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a3)">Recuerda</div>
+      <p style="font-size:13.5px">Un <strong>vector</strong> tiene magnitud y dirección (a diferencia de un escalar, que solo tiene valor numérico). Para sumar vectores se suman sus componentes; para multiplicarlos por un escalar, se multiplica cada componente. La <strong>magnitud</strong> se calcula con la raíz cuadrada de la suma de los cuadrados de sus componentes.</p>
+      <div class="tip green"><span class="tip-ico">📐</span><span><strong>Tip para el examen:</strong> si el escalar es negativo, el vector resultante invierte su sentido (apunta al lado contrario).</span></div>
+    </div>
+    <div class="quiz-box green" id="box-vectores">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Vectores</span></div>
+      <div class="quiz-score" id="score-vectores"></div>
+      <div class="qz-container" id="qz-vectores"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 4: VELOCIDAD Y ACELERACIÓN -->
+  <div id="velocidad">
+    <div class="sec-head gold">
+      <div class="sec-num">4</div>
+      <div class="sec-info">
+        <h2>Movimiento: velocidad y aceleración</h2>
+        <p>Repaso — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a4)">Recuerda</div>
+      <p style="font-size:13.5px">La <strong>velocidad</strong> se calcula con v=d/t. La <strong>aceleración</strong>, con a=(vf−vi)/t, y ocurre cuando la velocidad cambia con el tiempo. Si no hay fuerza que lo detenga, un cuerpo en movimiento mantendría idealmente su velocidad constante.</p>
+      <div class="tip gold"><span class="tip-ico">🏎️</span><span><strong>Tip para el examen:</strong> despeja siempre la variable que te piden antes de sustituir números, para no equivocarte con las operaciones.</span></div>
+    </div>
+    <div class="quiz-box gold" id="box-velocidad">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Velocidad y aceleración</span></div>
+      <div class="quiz-score" id="score-velocidad"></div>
+      <div class="qz-container" id="qz-velocidad"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 5: CAÍDA LIBRE Y TIRO VERTICAL -->
+  <div id="caidalibre">
+    <div class="sec-head purple">
+      <div class="sec-num">5</div>
+      <div class="sec-info">
+        <h2>Caída libre y tiro vertical</h2>
+        <p>Repaso — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a5)">Recuerda</div>
+      <p style="font-size:13.5px">La gravedad (g) ≈ 9.8 m/s². En <strong>caída libre</strong> el objeto parte del reposo (v₀=0), por lo que y=½gt². En <strong>tiro vertical</strong> hay una velocidad inicial hacia arriba: y=v₀t−½gt², y en el punto más alto la velocidad es cero.</p>
+      <div class="tip purple"><span class="tip-ico">🍎</span><span><strong>Tip para el examen:</strong> si el problema menciona "se suelta" o "se deja caer", es caída libre (v₀=0); si menciona "se lanza hacia arriba", es tiro vertical.</span></div>
+    </div>
+    <div class="quiz-box purple" id="box-caidalibre">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Caída libre y tiro vertical</span></div>
+      <div class="quiz-score" id="score-caidalibre"></div>
+      <div class="qz-container" id="qz-caidalibre"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 6: LEYES DE NEWTON -->
+  <div id="newton">
+    <div class="sec-head">
+      <div class="sec-num">6</div>
+      <div class="sec-info">
+        <h2>Leyes de Newton, peso y normal</h2>
+        <p>Repaso de la Unidad II — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a1)">Recuerda</div>
+      <p style="font-size:13.5px"><strong>1ª ley (inercia):</strong> sin fuerza, no hay cambio de velocidad. <strong>2ª ley:</strong> F=ma. <strong>3ª ley (acción-reacción):</strong> toda acción tiene una reacción igual y contraria. El <strong>peso</strong> (w=mg) es una fuerza y se mide en Newtons, distinto de la masa (kg).</p>
+      <div class="tip blue"><span class="tip-ico">🍏</span><span><strong>Tip para el examen:</strong> no confundas masa (kg) con peso (N); el peso depende de la gravedad, la masa no.</span></div>
+    </div>
+    <div class="quiz-box blue" id="box-newton">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Leyes de Newton, peso y normal</span></div>
+      <div class="quiz-score" id="score-newton"></div>
+      <div class="qz-container" id="qz-newton"></div>
+    </div>
+  </div>
+
+  <!-- TEMA 7: TRABAJO Y ENERGÍA -->
+  <div id="energia">
+    <div class="sec-head red">
+      <div class="sec-num">7</div>
+      <div class="sec-info">
+        <h2>Trabajo, energía potencial y cinética</h2>
+        <p>Repaso final de la Unidad II — 4 preguntas</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color:var(--a2)">Recuerda</div>
+      <p style="font-size:13.5px">El <strong>trabajo</strong> es W=Fd (se mide en Joules). La <strong>energía potencial</strong> es U=mgh (depende de masa, gravedad y altura). La <strong>energía cinética</strong> es K=½mv² (depende de masa y velocidad). Si un cuerpo está en reposo, su energía cinética es cero.</p>
+      <div class="tip red"><span class="tip-ico">⚡</span><span><strong>Tip para el examen:</strong> si la velocidad está en km/h, conviértela a m/s antes de calcular la energía cinética.</span></div>
+    </div>
+    <div class="quiz-box red" id="box-energia">
+      <div class="quiz-head"><span class="qz-ico">🙋</span><h4>Ponte a prueba</h4><span class="qz-sub">Tema: Trabajo y energía</span></div>
+      <div class="quiz-score" id="score-energia"></div>
+      <div class="qz-container" id="qz-energia"></div>
+    </div>
+  </div>
+
+  <div class="progreso-total" id="progreso-total">Progreso total: <span id="total-count">0 / 28</span> respondidas</div>
+
+</div>
+
+<footer>Guía de Estudio · Física III · Examen Extraordinario · Tercer Trimestre</footer>
+
+<script>
+function initQuiz(containerId, scoreId, colorClass, questions){
+  const container = document.getElementById(containerId);
+  const scoreEl = document.getElementById(scoreId);
+  let answered = 0, correct = 0;
+  const total = questions.length;
+  scoreEl.textContent = `Progreso: 0 / ${total} respondidas`;
+
+  questions.forEach((qz, i) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'qz-question';
+
+    const qText = document.createElement('div');
+    qText.className = 'qz-qtext';
+    const tag = qz.type === 'tf'
+      ? '<span class="qz-tag" style="background:var(--'+colorClass+')">V / F</span>'
+      : '<span class="qz-tag" style="background:var(--'+colorClass+')">OPCIÓN MÚLTIPLE</span>';
+    qText.innerHTML = `<span class="qz-num">${i+1}.</span><span>${qz.q} ${tag}</span>`;
+    qDiv.appendChild(qText);
+
+    const optsDiv = document.createElement('div');
+    optsDiv.className = qz.type === 'tf' ? 'qz-tf-opts' : 'qz-opts';
+
+    const explainDiv = document.createElement('div');
+    explainDiv.className = 'qz-explain';
+    explainDiv.innerHTML = qz.exp;
+
+    const opts = qz.type === 'tf' ? ['Verdadero', 'Falso'] : qz.options;
+    const correctIdx = qz.type === 'tf' ? (qz.correct ? 0 : 1) : qz.correct;
+
+    opts.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'qz-opt';
+      btn.textContent = qz.type === 'tf' ? opt : String.fromCharCode(97 + idx) + ') ' + opt;
+      btn.onclick = () => {
+        if (qDiv.dataset.done) return;
+        qDiv.dataset.done = '1';
+        answered++;
+        window.__totalAnswered = (window.__totalAnswered||0) + 1;
+        window.__totalCorrect = (window.__totalCorrect||0) + (idx === correctIdx ? 1 : 0);
+        if (idx === correctIdx) correct++;
+        Array.from(optsDiv.children).forEach((b, bi) => {
+          b.classList.add('disabled');
+          if (bi === correctIdx) b.classList.add('correct');
+          else if (bi === idx) b.classList.add('incorrect');
+        });
+        explainDiv.classList.add('show');
+        scoreEl.textContent = `Progreso: ${answered} / ${total} respondidas · ✅ ${correct} correctas`;
+        const tc = document.getElementById('total-count');
+        if (tc) tc.textContent = `${window.__totalAnswered} / 28`;
+      };
+      optsDiv.appendChild(btn);
+    });
+
+    qDiv.appendChild(optsDiv);
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
+}
+
+/* ===== 1. CONVERSIÓN DE UNIDADES ===== */
+initQuiz('qz-conversion','score-conversion','a1',[
+{type:'mc', q:'Un factor de conversión es una fracción cuyo valor equivale a:', options:['0','1','10','100'], correct:1, exp:'<b>Respuesta correcta: b) 1.</b> Por eso se puede multiplicar sin alterar la cantidad real.'},
+{type:'mc', q:'Si 1 pie = 30.48 cm, ¿cuántos pies tiene 1 metro (100 cm)?', options:['3.28 pies','30.48 pies','100 pies','0.328 pies'], correct:0, exp:'<b>Respuesta correcta: a) 3.28 pies.</b> 100/30.48=3.28.'},
+{type:'tf', q:'100 km/h equivalen aproximadamente a 27.77 m/s.', correct:true, exp:'<b>Verdadero.</b>'},
+{type:'mc', q:'Para convertir unidades compuestas como km/h a m/s, se necesita:', options:['Un solo factor de conversión','Varios factores de conversión multiplicados','No se puede convertir','Dividir entre 100'], correct:1, exp:'<b>Respuesta correcta: b.</b>'}
+]);
+
+/* ===== 2. NOTACIÓN CIENTÍFICA ===== */
+initQuiz('qz-notacion','score-notacion','a2',[
+{type:'mc', q:'0.000312459 en notación científica es:', options:['3.12459×10⁻⁴','3.12459×10⁴','31.2459×10⁻³','3.12459×10⁻³'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'mc', q:'Al multiplicar (4×10⁶)(2×10⁶), el resultado es:', options:['8×10¹²','8×10⁶','6×10¹²','8×10³⁶'], correct:0, exp:'<b>Respuesta correcta: a.</b> Se multiplican mantisas y se suman exponentes.'},
+{type:'mc', q:'El prefijo "micro" corresponde a la potencia:', options:['10⁻⁶','10⁶','10⁻³','10⁻⁹'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'Para sumar cantidades en notación científica, las potencias de 10 deben ser iguales antes de sumar las mantisas.', correct:true, exp:'<b>Verdadero.</b>'}
+]);
+
+/* ===== 3. VECTORES ===== */
+initQuiz('qz-vectores','score-vectores','a3',[
+{type:'mc', q:'Para el vector A=(3,2,5), la componente Ay es:', options:['3','2','5','10'], correct:1, exp:'<b>Respuesta correcta: b) 2.</b>'},
+{type:'mc', q:'Al sumar A=(2,0,4) y B=(1,-2,0), el resultado es:', options:['(3,-2,4)','(1,2,4)','(3,2,4)','(2,-2,0)'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'Si el escalar por el que se multiplica un vector es negativo, el sentido del vector resultante se invierte.', correct:true, exp:'<b>Verdadero.</b>'},
+{type:'tf', q:'Las magnitudes escalares, como la temperatura, tienen dirección.', correct:false, exp:'<b>Falso.</b> Los escalares solo tienen valor numérico, no dirección.'}
+]);
+
+/* ===== 4. VELOCIDAD Y ACELERACIÓN ===== */
+initQuiz('qz-velocidad','score-velocidad','a4',[
+{type:'mc', q:'Si v=8 km/h y t=0.5 h, la distancia recorrida es:', options:['4 km','16 km','8.5 km','0.0625 km'], correct:0, exp:'<b>Respuesta correcta: a) 4 km.</b>'},
+{type:'mc', q:'Cuando un objeto no cambia su posición en el tiempo, se dice que está en:', options:['Movimiento','Reposo','Aceleración','Caída libre'], correct:1, exp:'<b>Respuesta correcta: b.</b>'},
+{type:'mc', q:'Si vi=10 ft/s, a=2 ft/s², t=20 s, la velocidad final es:', options:['50 ft/s','30 ft/s','40 ft/s','70 ft/s'], correct:0, exp:'<b>Respuesta correcta: a) 50 ft/s.</b>'},
+{type:'tf', q:'La aceleración ocurre cuando la velocidad de un objeto es variable (cambia con el tiempo).', correct:true, exp:'<b>Verdadero.</b>'}
+]);
+
+/* ===== 5. CAÍDA LIBRE Y TIRO VERTICAL ===== */
+initQuiz('qz-caidalibre','score-caidalibre','a5',[
+{type:'mc', q:'La aceleración gravitatoria tiene un valor aproximado de:', options:['9.8 m/s²','8.9 m/s²','10.8 m/s²','6.7 m/s²'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'mc', q:'La fórmula de la posición en caída libre es:', options:['y=v₀t−½gt²','y=½gt²','y=v₀−gt','y=v₀+gt'], correct:1, exp:'<b>Respuesta correcta: b) y=½gt².</b> En caída libre v₀=0.'},
+{type:'mc', q:'En el punto más alto de un tiro vertical, la velocidad del objeto es:', options:['Cero','Máxima','Igual a g','Negativa siempre'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'En la caída libre, el objeto parte del reposo (velocidad inicial igual a cero).', correct:true, exp:'<b>Verdadero.</b>'}
+]);
+
+/* ===== 6. LEYES DE NEWTON ===== */
+initQuiz('qz-newton','score-newton','a1',[
+{type:'mc', q:'Si m=3kg y a=10m/s², la fuerza es:', options:['13 N','30 N','3.33 N','7 N'], correct:1, exp:'<b>Respuesta correcta: b) 30 N.</b>'},
+{type:'tf', q:'La primera ley de Newton también se conoce como ley de la inercia.', correct:true, exp:'<b>Verdadero.</b>'},
+{type:'mc', q:'El peso de un cuerpo de 2kg es aproximadamente:', options:['19.6 N','2 N','9.8 N','29.4 N'], correct:0, exp:'<b>Respuesta correcta: a) 19.6 N.</b>'},
+{type:'tf', q:'El peso de un cuerpo se mide en kilogramos, igual que su masa.', correct:false, exp:'<b>Falso.</b> El peso es una fuerza y se mide en Newtons; la masa se mide en kilogramos.'}
+]);
+
+/* ===== 7. TRABAJO Y ENERGÍA ===== */
+initQuiz('qz-energia','score-energia','a2',[
+{type:'mc', q:'El trabajo realizado por una fuerza de 30N a lo largo de 2.5m es:', options:['75 J','12 J','32.5 J','7.5 J'], correct:0, exp:'<b>Respuesta correcta: a) 75 J.</b>'},
+{type:'mc', q:'La energía potencial de un cuerpo de 0.9kg a 1.5m de altura es aproximadamente:', options:['13.23 J','1.5 J','8.82 J','14.7 J'], correct:0, exp:'<b>Respuesta correcta: a) 13.23 J.</b>'},
+{type:'mc', q:'Antes de calcular la energía cinética de un móvil cuya velocidad está en km/h, es necesario:', options:['Convertir la velocidad a m/s','Convertir la masa a gramos','No hacer ninguna conversión','Convertir el tiempo a segundos'], correct:0, exp:'<b>Respuesta correcta: a.</b>'},
+{type:'tf', q:'Un cuerpo en reposo (v=0) tiene energía cinética distinta de cero.', correct:false, exp:'<b>Falso.</b> Si v=0, entonces K=½m(0)²=0.'}
+]);
+</script>
+
+</body>
+</html>
